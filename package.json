@@ -1,7 +1,7 @@
 {
-  "name": "react-tw-frontend-boilerplate",
+  "name": "tic-tac-toe",
   "version": "1.0.0",
-  "description": "A simple boilerplate for react with tailwindcss and webpack",
+  "description": "A tic tac toe game for The Odin Project",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
