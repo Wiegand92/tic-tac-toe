@@ -53,11 +53,11 @@ const winByRow = (array, boardSize) => {
   return win;
 };
 
-const winByLTRDiag = (array, boardSize) => {
+const winByDiagonal = (array, boardSize, direction) => {
   // Assume the game is losing initially //
   let win;
   // Start checking the game at index 0 //
-  let checkIndex = 0;
+  let checkIndex = direction === 'LTR' ? 0 : boardSize - 1;
   // Holds the first mark to appear //
   let mark;
   // Check once for each row in the game //
@@ -78,38 +78,7 @@ const winByLTRDiag = (array, boardSize) => {
       win = true;
     }
     // Move start index to next row //
-    checkIndex += boardSize + 1;
-  }
-  // Return wether or not the game is winning //
-  return win;
-};
-
-const winByRTLDiag = (array, boardSize) => {
-  // Assume the game is losing initially //
-  let win;
-  // Start checking the game at index 0 //
-  let checkIndex = boardSize - 1;
-  // Holds the first mark to appear //
-  let mark;
-  // Check once for each row in the game //
-  for (let i = 0; i < boardSize; i++) {
-    // Return early if index is blank //
-    if (array[checkIndex] === '') {
-      win = false;
-      break;
-      // Set mark to first appearance //
-    } else if (mark === undefined) {
-      mark = array[checkIndex];
-      // Return if there is a mark that doesn't match //
-    } else if (mark !== array[checkIndex]) {
-      win = false;
-      break;
-      // Set win to true and keep checking //
-    } else {
-      win = true;
-    }
-    // Move start index to next row //
-    checkIndex += boardSize - 1;
+    checkIndex += direction === 'LTR' ? boardSize + 1 : boardSize - 1;
   }
   // Return wether or not the game is winning //
   return win;
