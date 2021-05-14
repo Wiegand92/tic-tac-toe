@@ -1,0 +1,5 @@
+.square{
+  min-width: 20px;
+  min-height: 20px;
+  @apply border-solid border-black row-span-1 col-span-1;
+}

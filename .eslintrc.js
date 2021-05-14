@@ -15,6 +15,7 @@ module.exports = {
   plugins: ['react', 'prettier', 'jest', 'cypress'],
   rules: {
     'prettier/prettier': 'warn',
+    'react/proptypes': false
   },
   settings: {
     react: {
