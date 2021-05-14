@@ -1,10 +1,10 @@
 const winningBoard = (array, boardSize) => {
   let win = false;
   // Check if the game is winning by diagonals first //
-  win = winByRTLDiag(array, boardSize);
+  win = winByDiagonal(array, boardSize, 'RTL');
   // If the game is not winning check by left to right diagonal //
   if (!win) {
-    win = winByLTRDiag(array, boardSize);
+    win = winByDiagonal(array, boardSize, 'LTR');
   }
   // If the game is still not winning, check by row //
   if (!win) {
