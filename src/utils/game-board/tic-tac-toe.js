@@ -1,4 +1,5 @@
-const winningBoard = require('./winning-board');
+// const winningBoard = require('./winning-board');
+import winningBoard from './winning-board';
 
 class TicTacToe {
   constructor(size = 9) {
@@ -58,15 +59,15 @@ class TicTacToe {
   }
 }
 
-// export default TicTacToe;
+export default TicTacToe;
 
-const board = new TicTacToe();
+// const board = new TicTacToe();
 
-console.log(board.markSpot(2));
-console.log(board.markSpot(5));
-board.markSpot(4);
-board.markSpot(3);
-console.log(board.markSpot(6));
-console.log(board.markSpot(1));
+// console.log(board.markSpot(2));
+// console.log(board.markSpot(5));
+// board.markSpot(4);
+// board.markSpot(3);
+// console.log(board.markSpot(6));
+// console.log(board.markSpot(1));
 
 // console.log(board.checkBoard());

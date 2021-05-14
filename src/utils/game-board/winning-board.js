@@ -84,5 +84,5 @@ const winByDiagonal = (array, boardSize, direction) => {
   return win;
 };
 
-// export default winningBoard;
-module.exports = winningBoard;
+export default winningBoard;
+// module.exports = winningBoard;
