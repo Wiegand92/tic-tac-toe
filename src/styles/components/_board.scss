@@ -1,3 +1,36 @@
-.board{
-  @apply grid;
+.container{
+  @apply flex flex-col place-content-center;
+  @apply text-center flex-1;
+
+  .board{
+    @apply max-w-min mx-auto;
+    @apply grid border-black border-2 border-solid place-items-center justify-around;
+    transition: grid-template-columns 2s ease-in;
+  }
+  .new-game{
+    @apply mt-3 flex justify-center;
+  }
+  button{
+    @apply bg-green-500 w-44 mr-2;
+  }
+  select{
+    @apply w-20 text-center ml-2;
+  }
+}
+.board-enter {
+  opacity: 0.01;
+}
+
+.board-enter.board-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.board-leave {
+  opacity: 1;
+}
+
+.board-leave.board-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
 }

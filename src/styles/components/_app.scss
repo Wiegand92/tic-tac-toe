@@ -1,13 +1,11 @@
 .app{
-  @apply h-full w-full pt-80 align-middle justify-around text-green-800;
-
+  @apply h-full w-full overflow-y-auto flex flex-col fixed;
   h1{
-    @apply text-center text-6xl;
+    @apply pr-10 bg-pink-300 h-20 text-6xl;
+    @apply flex items-center justify-end;
+    @apply border-b-2 border-solid border-gray-800;
   }
 
-  p{
-    @apply text-center;
-  }
   a{
     @apply text-blue-800;
   }

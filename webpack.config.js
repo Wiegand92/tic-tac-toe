@@ -21,7 +21,7 @@ module.exports = {
 
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'public/scripts'),
+    path: path.resolve(__dirname, 'docs/scripts'),
   },
 
   plugins,
@@ -68,7 +68,7 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
+    contentBase: path.resolve(__dirname, 'docs'),
     hot: true,
     publicPath: '/scripts/',
     watchContentBase: true,

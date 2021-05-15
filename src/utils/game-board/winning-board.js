@@ -6,6 +6,10 @@ const winningBoard = (array, boardSize) => {
   if (!win) {
     win = winByDiagonal(array, boardSize, 'LTR');
   }
+
+  if(!win) {
+    win = winByColumn(array, boardSize)
+  }
   // If the game is still not winning, check by row //
   if (!win) {
     win = winByRow(array, boardSize);
@@ -48,6 +52,46 @@ const winByRow = (array, boardSize) => {
     }
     // Move start index to next row //
     startIndex += boardSize;
+  }
+  // Return wether or not the game is winning //
+  return win;
+};
+
+const winByColumn = (array, boardSize) => {
+  // Assume the game is losing initially //
+  let win;
+  // Start checking the game at index 0 //
+  let startIndex = 0;
+  // Check once for each column in the game //
+  for (let i = 0; i < boardSize; i++) {
+    // Break out of loop after a win has been found //
+    if (win === true) {
+      return win;
+    }
+    // Holds the first mark to appear //
+    let mark;
+    let checkIndex = startIndex
+    // Check each index in the column //
+    for (let k = 0; k < boardSize; k++) {
+      // Return early if index is blank //
+      if (array[checkIndex] === '') {
+        win = false;
+        break;
+        // Set mark to first appearance and keep checking //
+      } else if (mark === undefined) {
+        mark = array[checkIndex];
+        // Return if there is a mark that doesn't match //
+      } else if (mark !== array[checkIndex]) {
+        win = false;
+        break;
+        // Set win to true and keep checking //
+      } else {
+        win = true;
+      }
+      checkIndex += boardSize
+    }
+    // Move start index to next column //
+    startIndex += 1;
   }
   // Return wether or not the game is winning //
   return win;

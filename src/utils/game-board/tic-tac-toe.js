@@ -46,7 +46,10 @@ class TicTacToe {
     // If the board is winning end the game and return who won //
     if (this.checkBoard()) {
       this.inProgress = false;
-      return `${this.mark} has won the Game!`;
+      return {board: this.board, message:`${this.mark} has won the Game!`};
+    }
+    if (!this.board.includes('') && !this.checkBoard()) {
+      return {board: this.board, message:'The game was a tie!'};
     }
     // Change the mark //
     this.changeMark(this.mark);
@@ -61,7 +64,8 @@ class TicTacToe {
 
 export default TicTacToe;
 
-// const board = new TicTacToe();
+// const board = new TicTacToe(49);
+// console.log(board)
 
 // console.log(board.markSpot(2));
 // console.log(board.markSpot(5));

@@ -1,5 +1,11 @@
 .square{
-  min-width: 20px;
-  min-height: 20px;
-  @apply border-solid border-black row-span-1 col-span-1;
+  @apply border-solid border-black border-2 h-20 w-20 row-span-1 col-span-1;
+  @apply flex place-items-center place-content-center text-2xl;
+  @apply hover:bg-green-700 cursor-pointer;
+  @apply transition-colors duration-300;
+
+}
+
+.invalid{
+  @apply hover:bg-red-900 cursor-default;
 }
