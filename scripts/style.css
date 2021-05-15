@@ -606,6 +606,10 @@ video {
   align-items: center;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
 .h-20 {
   height: 5rem;
 }
@@ -795,6 +799,7 @@ button:disabled{
   justify-content:center;
   place-content:center;
   flex:1 1 0%;
+  min-width:100%;
   text-align:center
 }
 

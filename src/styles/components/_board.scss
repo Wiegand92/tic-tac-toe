@@ -1,6 +1,6 @@
 .container{
   @apply flex flex-col place-content-center;
-  @apply text-center flex-1;
+  @apply text-center flex-1 min-w-full;
 
   .board{
     @apply max-w-min mx-auto;
