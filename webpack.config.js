@@ -21,7 +21,7 @@ module.exports = {
 
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, '/scripts'),
+    path: path.resolve(__dirname, 'scripts'),
   },
 
   plugins,
