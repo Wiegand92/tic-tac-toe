@@ -12,6 +12,7 @@ class TicTacToe {
     this.boardSize = Math.sqrt(size);
     this.mark = 'O';
     this.inProgress = true;
+    this.turns = 0
   }
 
   createBoard() {
@@ -20,6 +21,10 @@ class TicTacToe {
     // Fill it with empty strings //
     board.fill('');
     return board;
+  }
+
+  incrementMoves() {
+    this.turns += 1
   }
 
   changeMark(mark) {
@@ -35,22 +40,26 @@ class TicTacToe {
     // If the game is not in progress return an error string //
     if (!this.inProgress) {
       return 'Sorry the game is over';
-    }
+    };
     // If the index is not an empty string it is an invalid move //
     if (this.board[index] !== '') {
       return 'Invalid position';
-    }
+    };
+    this.incrementMoves();
     // Set the string at the index to the current mark //
     this.board[index] = this.mark;
-
-    // If the board is winning end the game and return who won //
-    if (this.checkBoard()) {
-      this.inProgress = false;
-      return {board: this.board, message:`${this.mark} has won the Game!`};
-    }
-    if (!this.board.includes('') && !this.checkBoard()) {
-      return {board: this.board, message:'The game was a tie!'};
-    }
+    
+    // Game can only be won after boardSize * 2 - 1 turns
+    if(this.turns >= this.boardSize * 2 - 1){
+      // If the board is winning end the game and return who won //
+      if (this.checkBoard()) {
+        this.inProgress = false;
+        return {board: this.board, message:`${this.mark} has won the Game!`};
+      }
+      if (!this.board.includes('') && !this.checkBoard()) {
+        return {board: this.board, message:'The game was a tie!'};
+      }
+    };
     // Change the mark //
     this.changeMark(this.mark);
     // Return a new board //
