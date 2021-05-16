@@ -557,9 +557,18 @@ video {
   background-color: rgba(4, 120, 87, var(--tw-bg-opacity));
 }
 
+.hover\:bg-pink-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(236, 72, 153, var(--tw-bg-opacity));
+}
+
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgba(0, 0, 0, var(--tw-border-opacity));
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
 }
 
 .border-solid {
@@ -572,6 +581,10 @@ video {
 
 .border-b-2 {
   border-bottom-width: 2px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .flex {
@@ -618,6 +631,14 @@ video {
   height: 100%;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -632,6 +653,10 @@ video {
 
 .p-0 {
   padding: 0px;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .pr-10 {
@@ -663,12 +688,12 @@ video {
   width: 5rem;
 }
 
-.w-44 {
-  width: 11rem;
-}
-
 .w-full {
   width: 100%;
+}
+
+.w-max {
+  width: max-content;
 }
 
 .row-span-1 {
@@ -811,7 +836,6 @@ button:disabled{
   max-width:min-content;
   --tw-border-opacity:1;
   border-color:rgba(0, 0, 0, var(--tw-border-opacity));
-  border-style:solid;
   border-width:2px;
   display:grid;
   align-items:center;
@@ -831,14 +855,40 @@ button:disabled{
 .container button{
   --tw-bg-opacity:1;
   background-color:rgba(16, 185, 129, var(--tw-bg-opacity));
+  border-radius:0.125rem;
   margin-right:0.5rem;
-  width:11rem
+  padding:0.5rem;
+  width:-webkit-max-content;
+  width:-moz-max-content;
+  width:max-content
+}
+
+.container button:hover{
+  --tw-bg-opacity:1;
+  background-color:rgba(236, 72, 153, var(--tw-bg-opacity))
+}
+
+.container button{
+  transition-property:background-color, border-color, color, fill, stroke;
+  transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration:150ms;
+  transition-duration:300ms
 }
 
 .container select{
+  border-radius:0.125rem;
   margin-left:0.5rem;
+  padding:0.5rem;
   text-align:center;
-  width:5rem
+  width:5rem;
+  --tw-bg-opacity:1;
+  background-color:rgba(16, 185, 129, var(--tw-bg-opacity));
+  cursor:pointer
+}
+
+.container select option{
+  --tw-bg-opacity:1;
+  background-color:rgba(255, 255, 255, var(--tw-bg-opacity))
 }
 
 .board-enter{
