@@ -7,33 +7,37 @@ class TicTacToe {
     if (size % 2 === 0 || !Number.isInteger(Math.sqrt(size))) {
       throw new Error('Invalid board size');
     }
-    this.size = size;
-    this.board = this.createBoard();
+    this.board = this.createBoard(size);
     this.boardSize = Math.sqrt(size);
-    this.mark = 'O';
     this.inProgress = true;
-    this.turns = 0
+    this.mark = 'O';
+    this.size = size;
+    this.turns = 0;
   }
-
-  createBoard() {
+  
+  createBoard(size) {
     // Create an array of the size indicated //
-    const board = new Array(this.size);
+    const board = new Array(size);
     // Fill it with empty strings //
     board.fill('');
     return board;
   }
-
-  incrementMoves() {
-    this.turns += 1
-  }
-
+  
   changeMark(mark) {
     // If the mark is 'O' set it to 'X' and vice versa //
     mark === 'O' ? (this.mark = 'X') : (this.mark = 'O');
   }
 
+  checkBoard() {
+    return winningBoard(this.board, this.boardSize);
+  }
+  
   getBoard() {
     return this.board;
+  }
+
+  incrementMoves() {
+    this.turns += 1
   }
 
   markSpot(index) {
@@ -65,22 +69,6 @@ class TicTacToe {
     // Return a new board //
     return this.getBoard();
   }
-
-  checkBoard() {
-    return winningBoard(this.board, this.boardSize);
-  }
 }
 
 export default TicTacToe;
-
-// const board = new TicTacToe(49);
-// console.log(board)
-
-// console.log(board.markSpot(2));
-// console.log(board.markSpot(5));
-// board.markSpot(4);
-// board.markSpot(3);
-// console.log(board.markSpot(6));
-// console.log(board.markSpot(1));
-
-// console.log(board.checkBoard());
