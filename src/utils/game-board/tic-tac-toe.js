@@ -10,7 +10,9 @@ class TicTacToe {
     this.board = this.createBoard(size);
     this.boardSize = Math.sqrt(size);
     this.inProgress = true;
+    this.legalMoves = this.board.map((piece, index) => {if(piece === '') return index})
     this.mark = 'O';
+    this.players = 1;
     this.size = size;
     this.turns = 0;
   }
@@ -36,6 +38,12 @@ class TicTacToe {
     return this.board;
   }
 
+  getLegalMoves(board){
+    const newLegalMoves = []
+    board.forEach((piece, index) => {if(piece === '') newLegalMoves.push(index)})
+    return newLegalMoves
+  }
+
   incrementMoves() {
     this.turns += 1
   }
@@ -46,7 +54,7 @@ class TicTacToe {
       return 'Sorry the game is over';
     };
     // If the index is not an empty string it is an invalid move //
-    if (this.board[index] !== '') {
+    if (!this.legalMoves.includes(index)) {
       return 'Invalid position';
     };
     this.incrementMoves();
@@ -64,6 +72,8 @@ class TicTacToe {
         return {board: this.board, message:'The game was a tie!'};
       }
     };
+    // Update legal moves //
+    this.legalMoves = [...this.getLegalMoves(this.board)];
     // Change the mark //
     this.changeMark(this.mark);
     // Return a new board //
