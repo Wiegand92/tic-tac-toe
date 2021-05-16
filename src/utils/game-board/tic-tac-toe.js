@@ -12,7 +12,6 @@ class TicTacToe {
     this.inProgress = true;
     this.legalMoves = this.board.map((piece, index) => {if(piece === '') return index})
     this.mark = 'O';
-    this.players = 1;
     this.size = size;
     this.turns = 0;
   }
