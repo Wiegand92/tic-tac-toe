@@ -1,19 +1,18 @@
 import React from 'react';
 
-const Square = ({piece, index, markSpot, setBoard, message, setMessage}) => {
+const Square = ({piece, index, markSpot, setBoard, message, setMessage, setComputerTurn, computerTurn}) => {
   const handleClick = () => {
+    if(computerTurn) return;
     const result = markSpot(index);
     if (Array.isArray(result)) {
-      console.log('hello')
       if(message) {
         setMessage('')
       }
       setBoard([...result]);
+      setComputerTurn(prev => !prev)
     } else if (typeof result === 'string') {
-      console.log('message')
       setMessage(result)
     } else {
-      console.log('win')
       setMessage(result.message)
       setBoard([...result.board])
     }

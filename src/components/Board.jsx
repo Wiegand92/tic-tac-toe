@@ -3,17 +3,35 @@ import {CSSTransition} from 'react-transition-group';
 
 import Square from './Square';
 import TicTacToe from '../utils/game-board/tic-tac-toe';
+import randomBot from '../utils/ai/randomBot';
 
 const Board = () => {
   const [game, setGame] = useState(new TicTacToe());
   const [board, setBoard] = useState([]);
   const [message, setMessage] = useState('');
   const [boardSize, setBoardSize] = useState(9);
-  const [inProp, setInProp] = useState(false)
+  const [inProp, setInProp] = useState(false);
+  const [computerTurn, setComputerTurn] = useState(false)
 
-  useEffect(() => { setBoard(game.getBoard()); setMessage('')}, [game] )
+  useEffect(() => { setBoard(game.getBoard()); setMessage(''); setComputerTurn(false)}, [game] )
   // useEffect(() => setInProp(false), [game])
-
+  useEffect(() => {
+    if(computerTurn){
+      const result = markBoard(randomBot(game.legalMoves));
+      if (Array.isArray(result)) {
+        if(message) {
+          setMessage('')
+        }
+        setBoard([...result]);
+        setComputerTurn(prev => !prev)
+      } else if (typeof result === 'string') {
+        setMessage(result)
+      } else {
+        setMessage(result.message)
+        setBoard([...result.board])
+      }
+    }
+  },[computerTurn])
   const markBoard = (index) => game.markSpot(index);
 
   return (
@@ -34,6 +52,8 @@ const Board = () => {
               markSpot={markBoard}
               message={message}
               setMessage={setMessage}
+              setComputerTurn={setComputerTurn}
+              computerTurn={computerTurn}
             />
           ))}
         </div>
